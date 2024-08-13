@@ -60,3 +60,11 @@ ew = rescale([float(G[u][v]['weight']) for u,v in G.edges],0.1,10)
 # edge color also shows weight
 ec = rescale([float(G[u][v]['weight']) for u,v in G.edges],0.1,1)
 ec = [graph_colormap(i) for i in ec]
+
+pos = nx.spring_layout(G)
+plt.figure(figsize=(15,8),facecolor=[0.7,0.7,0.7,0.4])
+nx.draw_networkx(G, pos=pos, with_labels=True, node_color=c, node_size=s,edge_color= ec,width=ew,
+                 font_color='grey',font_weight='bold',font_size='20')
+plt.axis('off')
+plt.savefig('SHP2',dpi=600, transparent=True)
+plt.show()
